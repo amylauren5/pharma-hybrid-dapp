@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "8514768a-93e6-4a75-8833-60159a81daa9",
+		"name": "pharma_producer_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34223797"
+	},
+	"item": [
+		{
+			"name": "Wallet Addresses Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"let mnf_address = response.result[1];\r",
+							"let dist_address = response.result[2];\r",
+							"let cons_address = response.result[3];\r",
+							"pm.environment.set(\"mnf_address\", mnf_address);\r",
+							"pm.environment.set(\"dist_address\", dist_address);\r",
+							"pm.environment.set(\"cons_address\", cons_address);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"jsonrpc\": \"2.0\",\r\n  \"method\": \"eth_accounts\",\r\n  \"params\": [],\r\n  \"id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8545",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8545"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Batch Request",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let json = pm.response.json();\r",
+							"pm.environment.set(\"batch_id\", json.batchId);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/batch/upload/{{mnf_address}}/0001/Medicine A/Description A/12-05-2027/7.99/200",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"batch",
+						"upload",
+						"{{mnf_address}}",
+						"0001",
+						"Medicine A",
+						"Description A",
+						"12-05-2027",
+						"7.99",
+						"200"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Distributor Purchase Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"jsonrpc\": \"2.0\",\r\n  \"method\": \"eth_accounts\",\r\n  \"params\": [],\r\n  \"id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/batch/{{batch_id}}/distributor/{{dist_address}}/quantity/20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"batch",
+						"{{batch_id}}",
+						"distributor",
+						"{{dist_address}}",
+						"quantity",
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Manufacturer Shipping Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/batch/{{batch_id}}/manufacturer/shipped",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"batch",
+						"{{batch_id}}",
+						"manufacturer",
+						"shipped"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Distributor Delivery Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/batch/{{batch_id}}/distributor/delivered",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"batch",
+						"{{batch_id}}",
+						"distributor",
+						"delivered"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consumer Purchase Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/batch/{{batch_id}}/consumer/{{cons_address}}/quantity/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"batch",
+						"{{batch_id}}",
+						"consumer",
+						"{{cons_address}}",
+						"quantity",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Distributor Shipping Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/batch/{{batch_id}}/distributor/shipped",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"batch",
+						"{{batch_id}}",
+						"distributor",
+						"shipped"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consumer Delivery Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/batch/{{batch_id}}/consumer/delivered",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"batch",
+						"{{batch_id}}",
+						"consumer",
+						"delivered"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
