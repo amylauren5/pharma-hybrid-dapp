@@ -60,7 +60,7 @@ npm install dockerode chartjs-node-canvas pdf-lib
 
 4. Test API endpoints with Postman using the collection and environment files in the `postman/` directory, reflecting the pharmaceutical supply chain scenario.
 
-5. To run automated tests, execute `baseline_test_run.js` and `chaos_test_run.js` in the `scripts/` directory. These scripts generate graphs in the `baseline-graph` and `chaos-graph` folders.
+5. To run automated tests, execute `baseline-test-run.js` and `chaos-test-run.js` in the `scripts/` directory. These scripts generate graphs in the `baseline-graph` and `chaos-graph` folders.
 
 6. When finished, run `./teardown.sh` to stop containers and clean up the Docker network.
 
