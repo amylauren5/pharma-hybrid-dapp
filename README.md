@@ -46,7 +46,7 @@ Install them using:
 
 ```bash
 npm install dockerode chartjs-node-canvas pdf-lib
-
+```
 
 ### How to Use (Linux or Unix-like environment)
 
