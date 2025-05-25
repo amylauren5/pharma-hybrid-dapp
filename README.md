@@ -12,7 +12,7 @@ Hybrid architectures that combine centralised and decentralised components offer
   - **pharma-hybrid-producer**: Responsible for producing and sending messages. Combines centralised services (e.g., Axon Server) with decentralised blockchain components to enhance performance and scalability.  
   - **pharma-hybrid-consumer**: Responsible for consuming and processing messages. Integrates centralised and decentralised systems to ensure efficient data handling and improved scalability.  
   - **postman/**: Contains Postman collections and environment configurations for simulating a pharmaceutical supply chain scenario:
-    - `pharma_environment.postman_environment.json`:  Defines environment variables (e.g., base URLs, auth tokens) used in requests.
+    - `pharma_environment.postman_environment.json`:  Defines environment variables (e.g., wallet address) used in requests.
     - `pharma_producer_app.postman_collection.json`: A collection of API requests to simulate producer-side operations within the hybrid system.
   - **scripts/**: Automation and utility scripts supporting development and testing workflows:
     - `baseline-test-run.js`: Runs baseline performance tests without injected faults to measure normal operation timings.  
