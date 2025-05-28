@@ -57,6 +57,12 @@ npm install dockerode chartjs-node-canvas pdf-lib
    - Extract Ganache wallet address and private key using `extract-ganache.sh`  
    - Launch all services with Docker Compose  
 
+Note: The Dockerfiles in `pharma-hybrid-producer` and `pharma-hybrid-consumer` require a JAR file. If needed, you can generate the JAR by running the following command in the respective project directory:
+
+```bash
+mvn clean package
+```
+
 2. Wait until Axon Server is healthy, then open `http://localhost:8024` to complete the **single-node setup**.
 
 3. Once setup is complete, the **hybrid producer and consumer apps** will start automatically and connect to Axon Server.
