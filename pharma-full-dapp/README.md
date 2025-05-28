@@ -1,6 +1,4 @@
-# Web3
-
-Implementation of Web3j in Java.
+# pharma-full-dapp
 
 ## Requirements:
 1. Web3j CLI (web3j-1.6.1.zip): https://github.com/hyperledger-web3j/web3j-cli/releases/tag/v1.6.1
